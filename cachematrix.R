@@ -28,8 +28,13 @@ cacheSolve <- function(x, ...) {
         return(i)
     }
     mtx <- x$get()
-    i <- solve(mtx)
-    message("calculate inverse matrix and set the value")
-    x$setinverse(i)
-    i
+    if (det(mtx) != 0){
+        i <- solve(mtx)
+        message("calculate inverse matrix and set the value")
+        x$setinverse(i)
+        i
+    }else{
+        message("the matrix is not inversable")
+    }
+        
 }
